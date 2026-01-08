@@ -101,13 +101,13 @@ export const About: React.FC = () => {
           <div className="flex gap-4">
             <div className="p-4 rounded-lg bg-white/5 border border-white/10 flex-1 relative group">
               <div className="absolute inset-0 bg-[#00FFFF]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="text-[#00FFFF] font-mono text-2xl font-bold relative">500+</div>
+              <div className="text-[#00FFFF] font-mono text-2xl font-bold relative">50+</div>
               <div className="text-xs text-white/40 uppercase tracking-tighter relative">Active Members</div>
             </div>
             <div className="p-4 rounded-lg bg-white/5 border border-white/10 flex-1 relative group">
               <div className="absolute inset-0 bg-[#00FF7F]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="text-[#00FF7F] font-mono text-2xl font-bold relative">20+</div>
-              <div className="text-xs text-white/40 uppercase tracking-tighter relative">Annual Events</div>
+              <div className="text-[#00FF7F] font-mono text-2xl font-bold relative">5+</div>
+              <div className="text-xs text-white/40 uppercase tracking-tighter relative">Annual Projects</div>
             </div>
           </div>
         </div>

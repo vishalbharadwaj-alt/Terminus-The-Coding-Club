@@ -36,7 +36,7 @@ const HubNode = ({ icon: Icon, label, description, delay, onClick }: any) => (
 export const NavigationHub: React.FC<NavigationHubProps> = ({ onClose, onNavigate }) => {
   const nodes = [
     { icon: Book, label: "About Protocol", description: "Home View", view: 'home', delay: 0.1 },
-    { icon: Terminal, label: "System Logs", description: "Event Stream", view: 'home', delay: 0.2 },
+    { icon: Terminal, label: "System Logs", description: "Event Stream", view: 'system-logs', delay: 0.2 },
     { icon: Code, label: "Source Code", description: "Repositories", view: 'projects', delay: 0.3 },
     { icon: Globe, label: "Uplink", description: "Mentorship", view: 'mentorship', delay: 0.4 },
     { icon: Cpu, label: "Arena", description: "Algo Night", view: 'algo-night', delay: 0.5 },

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Github, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -8,9 +9,19 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
         
         <div className="flex flex-col items-center md:items-start gap-4">
-          <span className="font-mono text-xl font-bold tracking-tighter neon-text-cyan">
+          <motion.span 
+            animate={{ 
+              textShadow: [
+                "0 0 4px rgba(0, 255, 255, 0.3)",
+                "0 0 8px rgba(0, 255, 255, 0.6)",
+                "0 0 4px rgba(0, 255, 255, 0.3)"
+              ]
+            }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="font-mono text-xl font-bold tracking-tighter text-[#00FFFF]"
+          >
             TERMINUS_
-          </span>
+          </motion.span>
           <p className="text-white/40 text-sm max-w-xs text-center md:text-left">
             Building the next generation of engineers at our University.
           </p>
@@ -35,7 +46,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="text-white/20 text-[10px] font-mono uppercase tracking-[0.2em]">
-          © 2024 TERMINUS CLUB. ALL RIGHTS RESERVED.
+          © 2025 TERMINUS CLUB. ALL RIGHTS RESERVED.
         </div>
       </div>
     </footer>

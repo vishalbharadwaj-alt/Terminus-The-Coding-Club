@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Globe, User, BookOpen, Star, Zap, Coffee } from 'lucide-react';
+import { AppView } from '../App';
 
-const MentorCard = ({ name, role, skills, bio, image }: any) => {
+const MentorCard = ({ name, role, skills, bio, onUplink }: any) => {
   return (
     <motion.div 
       whileHover={{ y: -5 }}
-      className="p-6 bg-[#111]/40 border border-white/5 rounded-2xl backdrop-blur-md relative group overflow-hidden"
+      className="p-6 bg-[#111]/40 border border-white/5 rounded-2xl backdrop-blur-md relative group overflow-hidden h-full flex flex-col"
     >
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00FFFF]/20 to-transparent" />
       
@@ -17,7 +18,7 @@ const MentorCard = ({ name, role, skills, bio, image }: any) => {
         </div>
         <div>
           <h3 className="font-bold text-lg">{name}</h3>
-          <p className="text-xs text-[#00FFFF] font-mono uppercase tracking-widest">{role}</p>
+          <p className="text-[10px] text-[#00FFFF] font-mono uppercase tracking-widest">{role}</p>
         </div>
       </div>
 
@@ -25,7 +26,7 @@ const MentorCard = ({ name, role, skills, bio, image }: any) => {
         {bio}
       </p>
 
-      <div className="space-y-3 mb-8">
+      <div className="space-y-3 mb-8 flex-1">
         {skills.map((skill: any) => (
           <div key={skill.name} className="space-y-1">
             <div className="flex justify-between text-[10px] font-mono uppercase text-white/30">
@@ -43,49 +44,70 @@ const MentorCard = ({ name, role, skills, bio, image }: any) => {
         ))}
       </div>
 
-      <button className="w-full py-3 border border-[#00FFFF]/30 text-[#00FFFF] text-xs font-mono uppercase rounded-lg hover:bg-[#00FFFF]/10 transition-all flex items-center justify-center gap-2">
+      <button 
+        onClick={onUplink}
+        className="w-full py-3 border border-[#00FFFF]/30 text-[#00FFFF] text-xs font-mono uppercase rounded-lg hover:bg-[#00FFFF]/10 transition-all flex items-center justify-center gap-2"
+      >
         Request Uplink <Zap size={14} />
       </button>
     </motion.div>
   );
 };
 
-export const Mentorship: React.FC = () => {
+interface MentorshipProps {
+  onNavigate: (view: AppView) => void;
+}
+
+export const Mentorship: React.FC<MentorshipProps> = ({ onNavigate }) => {
   const [filter, setFilter] = useState('All');
 
   const mentors = [
     { 
-      name: "Sarah Chen", 
-      role: "Lead Architect", 
-      skills: [{name: "React", level: 95}, {name: "Typescript", level: 90}], 
-      bio: "Full-stack enthusiast with a focus on scalable cloud architectures and accessible UI/UX design.",
+      name: "Vishal Bharadwaj", 
+      role: "Club President | Lead Architect", 
+      skills: [{name: "React", level: 98}, {name: "Typescript", level: 95}], 
+      bio: "Full-stack architect with a focus on high-performance distributed systems and reactive UI patterns.",
       category: "Frontend"
     },
     { 
-      name: "Marcus Thorne", 
-      role: "Security Analyst", 
-      skills: [{name: "Python", level: 92}, {name: "Network Sec", level: 98}], 
-      bio: "Ethical hacker specializing in zero-day exploit discovery and infrastructure hardening.",
-      category: "Security"
+      name: "Utkrista Kumar Das", 
+      role: "Club Vice President | Database Expert", 
+      skills: [{name: "Rust", level: 96}, {name: "PostgreSQL", level: 92}], 
+      bio: "Database architecture specialist focusing on data integrity, high-concurrency storage, and performance optimization.",
+      category: "Backend"
     },
     { 
-      name: "Elena Rodriguez", 
-      role: "AI Research", 
-      skills: [{name: "PyTorch", level: 96}, {name: "C++", level: 85}], 
-      bio: "Passionate about generative models and high-performance computing in the browser.",
-      category: "AI"
+      name: "Dhritiman Bayan", 
+      role: "Frontend Expert", 
+      skills: [{name: "Next.js", level: 94}, {name: "Framer Motion", level: 90}], 
+      bio: "Specializing in crafting immersive, performance-driven user interfaces with modern CSS and animation frameworks.",
+      category: "Frontend"
     },
     { 
-      name: "Devon Wu", 
-      role: "Systems Engineer", 
-      skills: [{name: "Rust", level: 94}, {name: "Linux Kernel", level: 88}], 
-      bio: "Low-level systems enthusiast working on embedded devices and distributed databases.",
+      name: "Tushar Kranti Sutradhar", 
+      role: "Database Engineer", 
+      skills: [{name: "PostgreSQL", level: 95}, {name: "NoSQL", level: 88}], 
+      bio: "Database architect focused on scalability, data integrity, and high-concurrency storage solutions.",
+      category: "Backend"
+    },
+    { 
+      name: "Prayash Bhagawati", 
+      role: "Backend Engineer", 
+      skills: [{name: "Go", level: 92}, {name: "Docker/K8s", level: 89}], 
+      bio: "Cloud-native enthusiast specializing in microservices architecture, container orchestration, and API design.",
+      category: "Backend"
+    },
+    { 
+      name: "Deepsikha Das", 
+      role: "Code Expert", 
+      skills: [{name: "Algorithms", level: 96}, {name: "Clean Code", level: 94}], 
+      bio: "Deep understanding of algorithmic complexity, clean code principles, and advanced software design patterns.",
       category: "Backend"
     }
   ];
 
   return (
-    <div className="pt-24 pb-32 px-6 md:px-24">
+    <div className="pt-24 pb-32 px-6 md:px-24 min-h-screen">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
           <div>
@@ -97,7 +119,7 @@ export const Mentorship: React.FC = () => {
           </div>
           
           <div className="flex gap-2 p-1 bg-white/5 border border-white/5 rounded-lg">
-            {['All', 'Frontend', 'Backend', 'AI', 'Security'].map(cat => (
+            {['All', 'Frontend', 'Backend'].map(cat => (
               <button 
                 key={cat}
                 onClick={() => setFilter(cat)}
@@ -109,21 +131,15 @@ export const Mentorship: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {mentors.filter(m => filter === 'All' || m.category === filter).map((m, i) => (
-            <MentorCard key={m.name} {...m} />
-          ))}
-        </div>
-
-        {/* Testimonials */}
-        <div className="mt-32">
-          <h2 className="text-2xl font-bold mb-12 flex items-center gap-3">
+        {/* Testimonials Block */}
+        <div className="mb-24">
+          <h2 className="text-2xl font-bold mb-10 flex items-center gap-3">
             <BookOpen size={24} className="text-[#00FF7F]" />
             Decoded_Transmissions
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[1, 2, 3].map(i => (
-              <div key={i} className="p-8 border border-white/5 bg-[#111]/20 relative">
+              <div key={i} className="p-8 border border-white/5 bg-[#111]/20 relative rounded-xl backdrop-blur-sm">
                 <div className="absolute top-0 right-0 p-4 opacity-5"><Coffee size={40} /></div>
                 <div className="flex gap-1 mb-4 text-[#00FF7F]">
                   {[...Array(5)].map((_, j) => <Star key={j} size={12} fill="currentColor" />)}
@@ -138,6 +154,13 @@ export const Mentorship: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Mentors Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {mentors.filter(m => filter === 'All' || m.category === filter).map((m, i) => (
+            <MentorCard key={m.name} {...m} onUplink={() => onNavigate('mentorship-survey')} />
+          ))}
         </div>
       </div>
     </div>

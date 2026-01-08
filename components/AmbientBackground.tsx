@@ -1,15 +1,18 @@
 
-import React, { useEffect, useState } from 'react';
-import { motion, useSpring, useMotionValue } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 
 export const AmbientBackground: React.FC = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Smooth out the mouse movement
   const springConfig = { damping: 25, stiffness: 150 };
   const springX = useSpring(mouseX, springConfig);
   const springY = useSpring(mouseY, springConfig);
+
+  // Convert number to px string for CSS variables
+  const xPx = useTransform(springX, (v) => `${v}px`);
+  const yPx = useTransform(springY, (v) => `${v}px`);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -37,9 +40,9 @@ export const AmbientBackground: React.FC = () => {
         className="absolute inset-0 z-10 opacity-30"
         style={{
           background: `radial-gradient(circle 400px at var(--x) var(--y), rgba(0, 255, 255, 0.15), transparent 80%)`,
-          // @ts-ignore - CSS variable support in style object
-          '--x': springX,
-          '--y': springY,
+          // @ts-ignore - CSS variables are supported in Framer Motion style objects
+          '--x': xPx,
+          '--y': yPx,
         } as any}
       />
 

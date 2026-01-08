@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Trophy, Zap, Terminal, Code2, ArrowRight } from 'lucide-react';
+import { AppView } from '../App';
 
 const SortingVisualizer = () => {
   return (
@@ -25,7 +26,11 @@ const SortingVisualizer = () => {
   );
 };
 
-export const AlgoNight: React.FC = () => {
+interface AlgoNightProps {
+  onNavigate: (view: AppView) => void;
+}
+
+export const AlgoNight: React.FC<AlgoNightProps> = ({ onNavigate }) => {
   const leaderboard = [
     { rank: '01', name: 'BinaryBard', score: '24,800', solved: '124' },
     { rank: '02', name: 'SortMaster', score: '22,150', solved: '110' },
@@ -43,15 +48,21 @@ export const AlgoNight: React.FC = () => {
               <Zap size={20} className="fill-orange-500" />
               <span className="text-xs font-mono uppercase tracking-[0.5em]">The_Arena Protocol Active</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8">Algo_Night</h1>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 italic uppercase">Algo_Night</h1>
             <p className="text-lg text-white/60 leading-relaxed mb-8 max-w-lg">
               Sharpen your logic, optimize your performance, and dominate the interview circuit. Weekly sessions dedicated to the art of competitive programming.
             </p>
             <div className="flex gap-4">
-              <button className="px-8 py-4 bg-orange-600 text-white font-mono font-bold rounded-lg hover:bg-orange-700 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(234,88,12,0.3)]">
+              <button 
+                onClick={() => onNavigate('algo-arena-survey')}
+                className="px-8 py-4 bg-orange-600 text-white font-mono font-bold rounded-lg hover:bg-orange-700 transition-all flex items-center gap-2 shadow-[0_0_20px_rgba(234,88,12,0.3)]"
+              >
                 Join Arena <ArrowRight size={18} />
               </button>
-              <button className="px-8 py-4 bg-white/5 border border-white/10 text-white font-mono font-bold rounded-lg hover:bg-white/10 transition-all">
+              <button 
+                onClick={() => onNavigate('practice-labs')}
+                className="px-8 py-4 bg-white/5 border border-white/10 text-white font-mono font-bold rounded-lg hover:bg-white/10 transition-all"
+              >
                 Practice_Labs
               </button>
             </div>
@@ -66,7 +77,7 @@ export const AlgoNight: React.FC = () => {
               <p className="text-white/60">Given a sorted array of integers, find the first occurrence of a target element...</p>
               <div className="mt-4 flex justify-between items-center pt-4 border-t border-white/5">
                 <span className="text-[10px] text-white/20 uppercase">Time Limit: 1.0s</span>
-                <span className="text-orange-500 font-bold">START ></span>
+                <span className="text-orange-500 font-bold cursor-pointer hover:underline" onClick={() => onNavigate('algo-arena-survey')}>START ></span>
               </div>
             </div>
           </div>
@@ -105,7 +116,7 @@ export const AlgoNight: React.FC = () => {
 
           {/* Stats/Resources */}
           <div className="space-y-8">
-            <div className="p-6 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-white/5">
+            <div className="p-6 bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-white/5 rounded-xl">
               <h3 className="text-sm font-bold uppercase mb-6 flex items-center gap-2">
                 <Terminal size={18} className="text-orange-500" />
                 Quick_Links

@@ -20,9 +20,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onInitialize, currentView, onNav
         className="flex items-center gap-2 cursor-pointer group"
         onClick={() => onNavigate('home')}
       >
-        <span className="font-mono text-xl font-bold tracking-tighter neon-text-cyan group-hover:text-[#00FFFF] transition-colors">
+        <motion.span 
+          animate={{ 
+            textShadow: [
+              "0 0 5px rgba(0, 255, 255, 0.4)",
+              "0 0 10px rgba(0, 255, 255, 0.7)",
+              "0 0 5px rgba(0, 255, 255, 0.4)"
+            ]
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="font-mono text-xl font-bold tracking-tighter text-[#00FFFF] group-hover:text-white transition-colors"
+        >
           TERMINUS_
-        </span>
+        </motion.span>
       </div>
 
       <div className="hidden md:flex items-center gap-8">

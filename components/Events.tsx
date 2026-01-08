@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Terminal, Cpu, Globe, Zap } from 'lucide-react';
+import { AppView } from '../App';
 
 const MatrixRain: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -45,7 +46,7 @@ const MatrixRain: React.FC = () => {
   return <canvas ref={canvasRef} className="absolute inset-0 opacity-40" />;
 };
 
-const EventCard = ({ title, date, description, icon: Icon, span = "", matrix = false }: any) => {
+const EventCard = ({ title, date, description, icon: Icon, span = "", matrix = false, onClick }: any) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -55,7 +56,8 @@ const EventCard = ({ title, date, description, icon: Icon, span = "", matrix = f
       viewport={{ once: true }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`relative group overflow-hidden bg-[#111]/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:border-[#00FFFF]/40 ${span}`}
+      onClick={onClick}
+      className={`relative group overflow-hidden bg-[#111]/40 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:border-[#00FFFF]/40 cursor-pointer ${span}`}
     >
       {matrix && isHovered && <MatrixRain />}
       
@@ -79,10 +81,13 @@ const EventCard = ({ title, date, description, icon: Icon, span = "", matrix = f
   );
 };
 
-export const Events: React.FC = () => {
+interface EventsProps {
+  onNavigate: (view: AppView) => void;
+}
+
+export const Events: React.FC<EventsProps> = ({ onNavigate }) => {
   return (
     <section id="events" className="relative py-32 px-6 md:px-24 bg-[#0a0a0a] overflow-hidden">
-      {/* Background HUD elements */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] border border-[#00FFFF]/20 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] border border-[#00FF7F]/20 rounded-full translate-y-1/2 -translate-x-1/2" />
@@ -108,7 +113,7 @@ export const Events: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <EventCard 
             title="HackTheTerminus" 
-            date="OCT 24-26, 2024"
+            date="OCT 24-26, 2025"
             description="Our flagship 48-hour hackathon. Push your limits and build something that changes the game."
             icon={Terminal}
             span="md:col-span-2 md:row-span-2"
@@ -116,7 +121,7 @@ export const Events: React.FC = () => {
           />
           <EventCard 
             title="AI Workshop" 
-            date="SEP 12, 2024"
+            date="SEP 12, 2025"
             description="Exploring neural networks and generative AI models with hands-on labs."
             icon={Cpu}
           />
@@ -125,12 +130,14 @@ export const Events: React.FC = () => {
             date="WEEKLY"
             description="Competitive programming sessions to sharpen your logic and speed."
             icon={Code2}
+            onClick={() => onNavigate('algo-night')}
           />
           <EventCard 
             title="Open Source Fest" 
-            date="NOV 10, 2024"
+            date="NOV 10, 2025"
             description="Contribute to global projects and learn the art of collaboration."
             icon={Globe}
+            onClick={() => onNavigate('contribution-portal')}
           />
         </div>
       </div>

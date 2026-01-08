@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Mail, Github, MessageSquare, Send, CheckCircle2 } from 'lucide-react';
 
-export const JoinUs: React.FC = () => {
+interface JoinUsProps {
+  onNavigate: () => void;
+}
+
+export const JoinUs: React.FC<JoinUsProps> = ({ onNavigate }) => {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +35,7 @@ export const JoinUs: React.FC = () => {
           <p className="text-white/40 font-mono text-sm uppercase tracking-widest">Your access request has been broadcasted to the network.</p>
           <div className="pt-8">
             <button 
-              onClick={() => window.location.reload()}
+              onClick={onNavigate}
               className="px-8 py-3 bg-[#111] border border-[#00FFFF]/30 text-[#00FFFF] font-mono text-xs uppercase hover:bg-[#00FFFF]/10 transition-all"
             >
               Return to Nexus

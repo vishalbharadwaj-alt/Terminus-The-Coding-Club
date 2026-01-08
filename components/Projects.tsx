@@ -3,6 +3,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Layers, HardDrive, Cpu, Terminal } from 'lucide-react';
 
+interface ProjectsProps {
+  onBrowse: () => void;
+}
+
 const ServerBlade = ({ title, description, tags, status, delay }: any) => {
   const statusColors: any = {
     online: 'bg-[#00FF7F]',
@@ -18,7 +22,6 @@ const ServerBlade = ({ title, description, tags, status, delay }: any) => {
       whileHover={{ x: 10 }}
       className="relative flex h-48 bg-[#111] border border-white/10 rounded-lg overflow-hidden group"
     >
-      {/* Front Panel (Left side) */}
       <div className="w-16 bg-[#1a1a1a] flex flex-col items-center py-4 border-r border-white/5 gap-6">
         <div className="flex flex-col items-center gap-2">
           <div className={`w-2 h-2 rounded-full ${statusColors[status]} shadow-[0_0_8px_currentColor] animate-pulse`} />
@@ -34,7 +37,6 @@ const ServerBlade = ({ title, description, tags, status, delay }: any) => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between mb-2">
@@ -55,14 +57,12 @@ const ServerBlade = ({ title, description, tags, status, delay }: any) => {
           ))}
         </div>
       </div>
-
-      {/* Decorative Handle */}
       <div className="absolute top-0 right-0 h-full w-1 bg-gradient-to-b from-white/5 via-white/10 to-white/5" />
     </motion.div>
   );
 };
 
-export const Projects: React.FC = () => {
+export const Projects: React.FC<ProjectsProps> = ({ onBrowse }) => {
   const projects = [
     { title: "Terminus_OS", description: "A high-performance shell environment built in Rust for efficient workflow management.", tags: ["Rust", "WASM", "Shell"], status: "online" },
     { title: "NetScan_Pro", description: "Distributed vulnerability scanner with real-time packet analysis and reporting.", tags: ["Python", "Go", "Redis"], status: "online" },
@@ -91,7 +91,6 @@ export const Projects: React.FC = () => {
           ))}
         </div>
 
-        {/* Contributing Section */}
         <div className="mt-20 p-8 rounded-2xl bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-white/5 relative overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 opacity-5">
             <Cpu size={120} />
@@ -104,7 +103,10 @@ export const Projects: React.FC = () => {
             <p className="text-white/60 max-w-2xl mb-8">
               Every great innovation starts with a single pull request. Join our top contributors and help build the future of our digital infrastructure.
             </p>
-            <button className="px-6 py-3 bg-[#00FFFF] text-[#0a0a0a] font-mono font-bold rounded hover:bg-[#00FFFF]/80 transition-all flex items-center gap-2">
+            <button 
+              onClick={onBrowse}
+              className="px-6 py-3 bg-[#00FFFF] text-[#0a0a0a] font-mono font-bold rounded hover:bg-[#00FFFF]/80 transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(0,255,255,0.4)]"
+            >
               Browse Repo <Github size={18} />
             </button>
           </div>
