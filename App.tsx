@@ -13,21 +13,26 @@ import { Mentorship } from './components/Mentorship';
 import { MentorshipSurvey } from './components/MentorshipSurvey';
 import { Security } from './components/Security';
 import { JoinUs } from './components/JoinUs';
+import { Team } from './components/Team';
 import { AlgoNight } from './components/AlgoNight';
 import { ArenaSurvey } from './components/ArenaSurvey';
 import { PracticeLabs } from './components/PracticeLabs';
 import { ContributionPortal } from './components/ContributionPortal';
 import { SystemLogs } from './components/SystemLogs';
-import { ArrowUp } from 'lucide-react';
+import { Login } from './components/Login';
+import { ArrowUp, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export type AppView = 'home' | 'projects' | 'mentorship' | 'security' | 'join' | 'algo-night' | 'project-library' | 'contribution-portal' | 'mentorship-survey' | 'system-logs' | 'algo-arena-survey' | 'practice-labs';
+export type AppView = 'home' | 'projects' | 'mentorship' | 'security' | 'join' | 'team' | 'algo-night' | 'project-library' | 'contribution-portal' | 'mentorship-survey' | 'system-logs' | 'algo-arena-survey' | 'practice-labs' | 'login';
+export type UserRole = 'GUEST' | 'USER' | 'ADMIN';
 
 const App: React.FC = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [isHubOpen, setIsHubOpen] = useState(false);
   const [currentView, setCurrentView] = useState<AppView>('home');
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [userRole, setUserRole] = useState<UserRole>('GUEST');
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,14 +47,31 @@ const App: React.FC = () => {
   }, [currentView]);
 
   const handleNavigate = (view: AppView) => {
-    setCurrentView(view);
+    // Restricted views check
+    if ((view === 'security' || view === 'system-logs') && userRole !== 'ADMIN') {
+      setCurrentView('login');
+    } else {
+      setCurrentView(view);
+    }
     setIsHubOpen(false);
+  };
+
+  const handleLogin = (role: UserRole, name: string) => {
+    setUserRole(role);
+    setUsername(name);
+    setCurrentView('home');
+  };
+
+  const handleLogout = () => {
+    setUserRole('GUEST');
+    setUsername(null);
+    setCurrentView('home');
   };
 
   const triggerNetworkTransition = (targetView: AppView) => {
     setIsTransitioning(true);
     setTimeout(() => {
-      setCurrentView(targetView);
+      handleNavigate(targetView);
       setTimeout(() => {
         setIsTransitioning(false);
       }, 800);
@@ -64,7 +86,10 @@ const App: React.FC = () => {
         <Navbar 
           onInitialize={() => setIsHubOpen(true)} 
           currentView={currentView}
-          onNavigate={(view) => setCurrentView(view)}
+          onNavigate={handleNavigate}
+          userRole={userRole}
+          username={username}
+          onLogout={handleLogout}
         />
         
         <main>
@@ -74,6 +99,12 @@ const App: React.FC = () => {
                 <Hero onOpenHub={() => setIsHubOpen(true)} />
                 <About />
                 <Events onNavigate={handleNavigate} />
+              </motion.div>
+            )}
+
+            {currentView === 'login' && (
+              <motion.div key="login" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
+                <Login onLogin={handleLogin} />
               </motion.div>
             )}
 
@@ -103,13 +134,37 @@ const App: React.FC = () => {
 
             {currentView === 'security' && (
               <motion.div key="security" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }}>
-                <Security />
+                {userRole === 'ADMIN' ? <Security /> : (
+                  <div className="min-h-screen flex items-center justify-center pt-24">
+                    <div className="text-center space-y-4">
+                      <Lock size={48} className="text-red-500 mx-auto" />
+                      <h2 className="text-2xl font-mono text-red-500 uppercase">Unauthorized Access</h2>
+                      <p className="text-white/40">Admin credentials required for this protocol.</p>
+                      <button onClick={() => setCurrentView('login')} className="px-6 py-2 border border-red-500 text-red-500 hover:bg-red-500/10 uppercase font-mono text-xs">Login</button>
+                    </div>
+                  </div>
+                )}
               </motion.div>
             )}
 
             {currentView === 'system-logs' && (
               <motion.div key="system-logs" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                <SystemLogs onNavigate={handleNavigate} />
+                {userRole === 'ADMIN' ? <SystemLogs onNavigate={handleNavigate} /> : (
+                   <div className="min-h-screen flex items-center justify-center pt-24">
+                   <div className="text-center space-y-4">
+                     <Lock size={48} className="text-red-500 mx-auto" />
+                     <h2 className="text-2xl font-mono text-red-500 uppercase">Logs Restricted</h2>
+                     <p className="text-white/40">Only authenticated admins can view system logs.</p>
+                     <button onClick={() => setCurrentView('login')} className="px-6 py-2 border border-red-500 text-red-500 hover:bg-red-500/10 uppercase font-mono text-xs">Authenticate</button>
+                   </div>
+                 </div>
+                )}
+              </motion.div>
+            )}
+
+            {currentView === 'team' && (
+              <motion.div key="team" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+                <Team />
               </motion.div>
             )}
 
@@ -200,6 +255,7 @@ const App: React.FC = () => {
           <NavigationHub 
             onClose={() => setIsHubOpen(false)} 
             onNavigate={handleNavigate}
+            userRole={userRole}
           />
         )}
       </AnimatePresence>

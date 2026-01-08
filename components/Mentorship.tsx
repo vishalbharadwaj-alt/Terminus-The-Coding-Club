@@ -1,8 +1,13 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Globe, User, BookOpen, Star, Zap, Coffee } from 'lucide-react';
+import { Globe, User, BookOpen, Star, Zap, Coffee, Code, Database, Shield, Cpu, Brain, Rocket } from 'lucide-react';
 import { AppView } from '../App';
+
+// Define the missing MentorshipProps interface
+interface MentorshipProps {
+  onNavigate: (view: AppView) => void;
+}
 
 const MentorCard = ({ name, role, skills, bio, onUplink }: any) => {
   return (
@@ -54,24 +59,44 @@ const MentorCard = ({ name, role, skills, bio, onUplink }: any) => {
   );
 };
 
-interface MentorshipProps {
-  onNavigate: (view: AppView) => void;
-}
-
 export const Mentorship: React.FC<MentorshipProps> = ({ onNavigate }) => {
   const [filter, setFilter] = useState('All');
+
+  const testimonials = [
+    {
+      id: '01',
+      icon: Brain,
+      text: "The AI workshops hosted by Prayash and Deepsikha were incredibly deep. I went from knowing nothing about Transformers to fine-tuning my own LLMs on local hardware. Truly transformative experience.",
+      user: "Neural_Path_X",
+      stars: 5
+    },
+    {
+      id: '02',
+      icon: Cpu,
+      text: "Focusing on Rust with Utkrista helped me understand memory management at a fundamental level. I'm now contributing to core systems that handle millions of requests. The mentorship here is world-class.",
+      user: "Systems_Root_42",
+      stars: 5
+    },
+    {
+      id: '03',
+      icon: Rocket,
+      text: "Terminus isn't just about code; it's about the mission. Vishal's career guidance helped me navigate multiple FAANG offers and choose the path that aligned with my architectural interests. Five stars.",
+      user: "Elite_Dev_2025",
+      stars: 5
+    }
+  ];
 
   const mentors = [
     { 
       name: "Vishal Bharadwaj", 
-      role: "Club President | Lead Architect", 
+      role: "Lead Architect", 
       skills: [{name: "React", level: 98}, {name: "Typescript", level: 95}], 
       bio: "Full-stack architect with a focus on high-performance distributed systems and reactive UI patterns.",
       category: "Frontend"
     },
     { 
       name: "Utkrista Kumar Das", 
-      role: "Club Vice President | Database Expert", 
+      role: "Database Expert", 
       skills: [{name: "Rust", level: 96}, {name: "PostgreSQL", level: 92}], 
       bio: "Database architecture specialist focusing on data integrity, high-concurrency storage, and performance optimization.",
       category: "Backend"
@@ -138,21 +163,28 @@ export const Mentorship: React.FC<MentorshipProps> = ({ onNavigate }) => {
             Decoded_Transmissions
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map(i => (
-              <div key={i} className="p-8 border border-white/5 bg-[#111]/20 relative rounded-xl backdrop-blur-sm">
-                <div className="absolute top-0 right-0 p-4 opacity-5"><Coffee size={40} /></div>
-                <div className="flex gap-1 mb-4 text-[#00FF7F]">
-                  {[...Array(5)].map((_, j) => <Star key={j} size={12} fill="currentColor" />)}
+            {testimonials.map((t) => {
+              const Icon = t.icon;
+              return (
+                <div key={t.id} className="p-8 border border-white/5 bg-[#111]/20 relative rounded-xl backdrop-blur-sm group hover:border-[#00FFFF]/20 transition-all">
+                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                    <Icon size={40} />
+                  </div>
+                  <div className="flex gap-1 mb-4 text-[#00FF7F]">
+                    {[...Array(t.stars)].map((_, j) => <Star key={j} size={12} fill="currentColor" />)}
+                  </div>
+                  <p className="text-sm text-white/50 italic leading-relaxed min-h-[4.5rem]">
+                    "{t.text}"
+                  </p>
+                  <div className="mt-6 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
+                      <User size={14} className="text-white/20" />
+                    </div>
+                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">User_ID: {t.user}</span>
+                  </div>
                 </div>
-                <p className="text-sm text-white/50 italic leading-relaxed">
-                  "The mentorship here changed my entire approach to engineering. I went from coding simple apps to building distributed systems in 6 months."
-                </p>
-                <div className="mt-6 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10" />
-                  <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest">User_ID: Node_0{i}x</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 

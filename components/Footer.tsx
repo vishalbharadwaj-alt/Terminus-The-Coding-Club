@@ -12,15 +12,15 @@ export const Footer: React.FC = () => {
           <motion.span 
             animate={{ 
               textShadow: [
-                "0 0 4px rgba(0, 255, 255, 0.3)",
-                "0 0 8px rgba(0, 255, 255, 0.6)",
-                "0 0 4px rgba(0, 255, 255, 0.3)"
+                "0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3)",
+                "0 0 12px rgba(0, 255, 255, 0.7), 0 0 24px rgba(0, 255, 255, 0.5)",
+                "0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3)"
               ]
             }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="font-mono text-xl font-bold tracking-tighter text-[#00FFFF]"
+            className="font-eb-garamond text-xl font-bold tracking-tight text-white"
           >
-            TERMINUS_
+            TERMINUS
           </motion.span>
           <p className="text-white/40 text-sm max-w-xs text-center md:text-left">
             Building the next generation of engineers at our University.

@@ -85,9 +85,10 @@ export const SystemLogs: React.FC<{ onNavigate: (view: AppView) => void }> = ({ 
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const filteredLogs = logData.filter(log => {
+    const q = search.toLowerCase();
     const matchesFilter = filter === 'ALL' || log.category === filter;
-    const matchesSearch = log.message.toLowerCase().includes(search.toLowerCase()) || 
-                          log.details.toLowerCase().includes(search.toLowerCase());
+    const matchesSearch = (log.message?.toLowerCase().includes(q)) || 
+                          (log.details?.toLowerCase().includes(q));
     return matchesFilter && matchesSearch;
   });
 

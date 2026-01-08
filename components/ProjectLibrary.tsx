@@ -36,7 +36,7 @@ const LibraryCard = ({ project }: any) => {
       </div>
 
       <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-white/5">
-        {project.tags.map((tag: string) => (
+        {(project.tags || []).map((tag: string) => (
           <span key={tag} className="text-[9px] font-mono uppercase px-2 py-0.5 bg-white/5 text-white/40 rounded border border-white/10">
             {tag}
           </span>
@@ -71,9 +71,10 @@ export const ProjectLibrary: React.FC = () => {
   ];
 
   const filteredProjects = libraryData.filter(p => {
-    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          p.author.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesFilter = activeFilter === 'All' || p.tags.includes(activeFilter);
+    const q = searchQuery.toLowerCase();
+    const matchesSearch = (p.name?.toLowerCase().includes(q)) || 
+                          (p.author?.toLowerCase().includes(q));
+    const matchesFilter = activeFilter === 'All' || (p.tags && p.tags.includes(activeFilter));
     return matchesSearch && matchesFilter;
   });
 

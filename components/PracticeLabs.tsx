@@ -33,8 +33,9 @@ export const PracticeLabs: React.FC<PracticeLabsProps> = ({ onNavigate }) => {
   const [selectedVideo, setSelectedVideo] = useState<VideoEntry | null>(null);
 
   const filteredVideos = videoData.filter(v => {
-    const matchesSearch = v.title.toLowerCase().includes(search.toLowerCase()) || 
-                          v.language.toLowerCase().includes(search.toLowerCase());
+    const q = search.toLowerCase();
+    const matchesSearch = (v.title?.toLowerCase().includes(q)) || 
+                          (v.language?.toLowerCase().includes(q));
     const matchesTopic = activeTopic === 'All' || v.topic === activeTopic;
     return matchesSearch && matchesTopic;
   });

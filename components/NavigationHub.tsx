@@ -1,47 +1,51 @@
 
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Shield, Terminal, Book, Code, Users, Cpu, Activity, Globe } from 'lucide-react';
-import { AppView } from '../App';
+import { X, Shield, Terminal, Book, Code, Users, Cpu, Activity, Globe, UserCheck, Lock } from 'lucide-react';
+import { AppView, UserRole } from '../App';
 
 interface NavigationHubProps {
   onClose: () => void;
   onNavigate: (view: AppView) => void;
+  userRole: UserRole;
 }
 
-const HubNode = ({ icon: Icon, label, description, delay, onClick }: any) => (
+const HubNode = ({ icon: Icon, label, description, delay, onClick, restricted, userRole }: any) => (
   <motion.button
     initial={{ opacity: 0, scale: 0.8, y: 20 }}
     animate={{ opacity: 1, scale: 1, y: 0 }}
     transition={{ delay, duration: 0.4, type: "spring" }}
-    whileHover={{ scale: 1.05, borderColor: "rgba(0, 255, 255, 0.6)" }}
+    whileHover={{ scale: 1.05, borderColor: restricted && userRole !== 'ADMIN' ? "rgba(239, 68, 68, 0.4)" : "rgba(0, 255, 255, 0.6)" }}
     whileTap={{ scale: 0.95 }}
     onClick={onClick}
-    className="relative group flex flex-col items-center justify-center p-6 bg-[#111]/60 backdrop-blur-xl border border-white/10 rounded-2xl transition-all duration-300 w-full hover:bg-[#00FFFF]/5"
+    className={`relative group flex flex-col items-center justify-center p-6 bg-[#111]/60 backdrop-blur-xl border border-white/10 rounded-2xl transition-all duration-300 w-full ${restricted && userRole !== 'ADMIN' ? 'hover:bg-red-500/5' : 'hover:bg-[#00FFFF]/5'}`}
   >
-    <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#00FFFF]/40 group-hover:border-[#00FFFF]" />
-    <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#00FFFF]/40 group-hover:border-[#00FFFF]" />
-    <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#00FFFF]/40 group-hover:border-[#00FFFF]" />
-    <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#00FFFF]/40 group-hover:border-[#00FFFF]" />
+    <div className={`absolute top-0 left-0 w-2 h-2 border-t border-l border-white/10 group-hover:border-${restricted && userRole !== 'ADMIN' ? 'red-500' : '[#00FFFF]'}`} />
+    <div className={`absolute top-0 right-0 w-2 h-2 border-t border-r border-white/10 group-hover:border-${restricted && userRole !== 'ADMIN' ? 'red-500' : '[#00FFFF]'}`} />
+    <div className={`absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/10 group-hover:border-${restricted && userRole !== 'ADMIN' ? 'red-500' : '[#00FFFF]'}`} />
+    <div className={`absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/10 group-hover:border-${restricted && userRole !== 'ADMIN' ? 'red-500' : '[#00FFFF]'}`} />
     
-    <div className="mb-4 text-[#00FFFF] group-hover:neon-text-cyan transition-all">
-      <Icon size={32} />
+    <div className={`mb-4 ${restricted && userRole !== 'ADMIN' ? 'text-red-500/40' : 'text-[#00FFFF] group-hover:neon-text-cyan'} transition-all`}>
+      {restricted && userRole !== 'ADMIN' ? <Lock size={32} /> : <Icon size={32} />}
     </div>
     
-    <span className="font-mono text-sm font-bold text-white group-hover:text-[#00FFFF] transition-colors">{label}</span>
-    <span className="text-[10px] text-white/30 uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-opacity">{description}</span>
+    <span className="font-mono text-sm font-bold text-white group-hover:text-white transition-colors">{label}</span>
+    <span className={`text-[10px] uppercase tracking-widest mt-1 opacity-0 group-hover:opacity-100 transition-opacity ${restricted && userRole !== 'ADMIN' ? 'text-red-500' : 'text-white/30'}`}>
+      {restricted && userRole !== 'ADMIN' ? 'Access Restricted' : description}
+    </span>
   </motion.button>
 );
 
-export const NavigationHub: React.FC<NavigationHubProps> = ({ onClose, onNavigate }) => {
+export const NavigationHub: React.FC<NavigationHubProps> = ({ onClose, onNavigate, userRole }) => {
   const nodes = [
-    { icon: Book, label: "About Protocol", description: "Home View", view: 'home', delay: 0.1 },
-    { icon: Terminal, label: "System Logs", description: "Event Stream", view: 'system-logs', delay: 0.2 },
-    { icon: Code, label: "Source Code", description: "Repositories", view: 'projects', delay: 0.3 },
-    { icon: Globe, label: "Uplink", description: "Mentorship", view: 'mentorship', delay: 0.4 },
-    { icon: Cpu, label: "Arena", description: "Algo Night", view: 'algo-night', delay: 0.5 },
-    { icon: Shield, label: "Security", description: "White Hat", view: 'security', delay: 0.6 },
-    { icon: Users, label: "Access", description: "Join Us", view: 'join', delay: 0.7 },
+    { icon: Book, label: "About Protocol", description: "Home View", view: 'home', delay: 0.05, restricted: false },
+    { icon: Terminal, label: "System Logs", description: "Event Stream", view: 'system-logs', delay: 0.1, restricted: true },
+    { icon: Code, label: "Source Code", description: "Repositories", view: 'projects', delay: 0.15, restricted: false },
+    { icon: Globe, label: "Uplink", description: "Mentorship", view: 'mentorship', delay: 0.2, restricted: false },
+    { icon: Cpu, label: "Arena", description: "Algo Night", view: 'algo-night', delay: 0.25, restricted: false },
+    { icon: Shield, label: "Security", description: "White Hat", view: 'security', delay: 0.3, restricted: true },
+    { icon: UserCheck, label: "The Team", description: "Operatives", view: 'team', delay: 0.35, restricted: false },
+    { icon: Users, label: "Access", description: "Join Us", view: 'join', delay: 0.4, restricted: false },
   ];
 
   return (
@@ -58,7 +62,7 @@ export const NavigationHub: React.FC<NavigationHubProps> = ({ onClose, onNavigat
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-[#00FFFF]/5 to-transparent animate-scanline" />
       </div>
 
-      <div className="relative max-w-5xl w-full">
+      <div className="relative max-w-6xl w-full">
         <div className="flex justify-between items-center mb-12">
           <div className="flex items-center gap-4">
             <Activity className="text-[#00FF7F]" size={24} />
@@ -76,10 +80,10 @@ export const NavigationHub: React.FC<NavigationHubProps> = ({ onClose, onNavigat
           </button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
           {nodes.map((node, i) => (
-            <div key={node.label} className={i === 6 ? "col-span-2 md:col-span-1" : ""}>
-               <HubNode {...node} onClick={() => onNavigate(node.view as AppView)} />
+            <div key={node.label}>
+               <HubNode {...node} userRole={userRole} onClick={() => onNavigate(node.view as AppView)} />
             </div>
           ))}
         </div>
@@ -87,8 +91,8 @@ export const NavigationHub: React.FC<NavigationHubProps> = ({ onClose, onNavigat
         <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
           <div className="flex items-center gap-6 font-mono text-[10px] text-white/30 uppercase tracking-widest">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#00FF7F]" />
-              <span>Core Status: Stable</span>
+              <span className={`w-2 h-2 rounded-full ${userRole === 'ADMIN' ? 'bg-red-500' : 'bg-[#00FF7F]'}`} />
+              <span>Auth Status: {userRole}</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#00FFFF]" />

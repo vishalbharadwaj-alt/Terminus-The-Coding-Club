@@ -63,7 +63,7 @@ const TerminalOverlay = ({ onClose }: { onClose: () => void }) => {
             initial={{ x: -10, opacity: 0 }} 
             animate={{ x: 0, opacity: 1 }} 
             key={i} 
-            className={`${log.includes('SUCCESSFUL') || log.includes('ACQUIRED') ? 'text-[#00FF7F]' : 'text-red-500/80'}`}
+            className={`${log?.includes('SUCCESSFUL') || log?.includes('ACQUIRED') ? 'text-[#00FF7F]' : 'text-red-500/80'}`}
           >
             {log}
           </motion.div>
@@ -357,7 +357,7 @@ export const Security: React.FC = () => {
                       key={alert}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className={`${alert.includes('CRITICAL') || alert.includes('UNAUTHORIZED') ? 'text-red-500' : 'text-white/60'}`}
+                      className={`${alert?.includes('CRITICAL') || alert?.includes('UNAUTHORIZED') ? 'text-red-500' : 'text-white/60'}`}
                     >
                       {alert}
                     </motion.div>

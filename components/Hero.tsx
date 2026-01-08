@@ -11,29 +11,29 @@ interface HeroProps {
 const GlitchText = ({ text }: { text: string }) => {
   return (
     <div className="relative inline-block">
-      {/* Main Text with Advanced Neon Pulse */}
+      {/* Main Text: White core with Neon Lining (Text Shadow) */}
       <motion.h1 
         animate={{ 
           textShadow: [
-            "0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2)",
-            "0 0 20px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.3)",
-            "0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.4), 0 0 30px rgba(0, 255, 255, 0.2)"
+            "0 0 7px rgba(0, 255, 255, 0.7), 0 0 14px rgba(0, 255, 255, 0.5), 0 0 21px rgba(0, 255, 255, 0.2)",
+            "0 0 12px rgba(0, 255, 255, 0.9), 0 0 24px rgba(0, 255, 255, 0.7), 0 0 36px rgba(0, 255, 255, 0.4)",
+            "0 0 7px rgba(0, 255, 255, 0.7), 0 0 14px rgba(0, 255, 255, 0.5), 0 0 21px rgba(0, 255, 255, 0.2)"
           ],
-          opacity: [0.9, 1, 0.9]
+          opacity: [0.95, 1, 0.95]
         }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        className="text-7xl md:text-9xl font-mono font-black tracking-tighter text-[#00FFFF] relative z-10 select-none"
+        className="text-6xl md:text-8xl font-eb-garamond font-bold tracking-tighter text-white relative z-10 select-none"
       >
         {text}
       </motion.h1>
 
-      {/* Glitch Layer 1 - Red Shift */}
+      {/* Glitch Layer 1 - Red Shift (Lowered opacity to keep focus on white/cyan) */}
       <motion.h1
-        className="absolute top-0 left-0 text-7xl md:text-9xl font-mono font-black tracking-tighter text-red-500/30 z-0 pointer-events-none select-none"
+        className="absolute top-0 left-0 text-6xl md:text-8xl font-eb-garamond font-bold tracking-tighter text-red-500/20 z-0 pointer-events-none select-none"
         animate={{
           x: [-2, 2, -1, 3, 0],
           y: [1, -1, 2, 0],
-          opacity: [0, 0.2, 0, 0.4, 0],
+          opacity: [0, 0.1, 0, 0.2, 0],
         }}
         transition={{
           duration: 0.2,
@@ -46,11 +46,11 @@ const GlitchText = ({ text }: { text: string }) => {
 
       {/* Glitch Layer 2 - Blue Shift */}
       <motion.h1
-        className="absolute top-0 left-0 text-7xl md:text-9xl font-mono font-black tracking-tighter text-blue-500/30 z-0 pointer-events-none select-none"
+        className="absolute top-0 left-0 text-6xl md:text-8xl font-eb-garamond font-bold tracking-tighter text-blue-500/20 z-0 pointer-events-none select-none"
         animate={{
           x: [2, -2, 1, -3, 0],
           y: [-1, 1, -2, 0],
-          opacity: [0, 0.2, 0, 0.4, 0],
+          opacity: [0, 0.1, 0, 0.2, 0],
         }}
         transition={{
           duration: 0.2,
@@ -145,7 +145,7 @@ const BootSequence = ({ onComplete }: { onComplete: () => void }) => {
                 key={i}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                className={`text-xs ${log.includes('OK') || log.includes('Ready') ? 'text-[#00FF7F]' : 'text-white/40'}`}
+                className={`text-xs ${log && (log.includes('OK') || log.includes('Ready')) ? 'text-[#00FF7F]' : 'text-white/40'}`}
               >
                 {log}
               </motion.div>
@@ -256,7 +256,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenHub }) => {
               animate="visible"
               className="space-y-4"
             >
-              <GlitchText text="TERMINUS_" />
+              <GlitchText text="TERMINUS" />
               
               <motion.div 
                 initial={{ opacity: 0 }}
