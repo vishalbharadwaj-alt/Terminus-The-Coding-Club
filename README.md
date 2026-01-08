@@ -1,14 +1,16 @@
 <div align="center">
-  <img src="./public/terminus-logo-final.jpeg" alt="Terminus Logo" width="200" />
+  <img src="./public/terminus logo final.jpeg" alt="Terminus Logo" width="250" />
   <br />
-  <h1>TERMINUS_</h1>
-  <p><strong>// THE UNIVERSITY CODING COLLECTIVE</strong></p>
-  
+  <br />
+
+  # TERMINUS
+  ### // THE CODING COLLECTIVE
+
   <p>
-    <a href="https://vishalbharadwaj-alt.github.io/Terminus-The-Coding-Club/"><strong>View Live Deployment »</strong></a>
+    <a href="https://vishalbharadwaj-alt.github.io/Terminus-The-Coding-Club/"><strong>🔴 LIVE SYSTEM DEPLOYMENT</strong></a>
     <br />
     <br />
-    <a href="#-about-the-project">System Status</a>
+    <a href="#-system-overview">System Overview</a>
     ·
     <a href="#-tech-stack">Tech Stack</a>
     ·
@@ -23,39 +25,40 @@
 
 <br />
 
-## 📟 >_ About The Project
+## 📟 >_ System Overview
 
-**Terminus** is not just a club website; it is a digital experience designed to reflect the chaotic creativity of code. Built with a "Cyberpunk / High-Tech" aesthetic, the site serves as the central hub for our university's hackers, builders, and visionaries.
+**Terminus** is a high-performance, cyberpunk-themed landing page designed for a university coding club. It serves as the digital headquarters for hackers, builders, and developers.
 
-The interface mimics a futuristic operating system, featuring glitch effects, terminal windows, and data visualizations that immerse the user in our world.
+The interface is built to mimic a futuristic operating system, featuring immersive animations, glitch effects, and interactive data visualizations. It moves beyond standard web design to create a "terminal" experience for the user.
 
-### ✨ Core Features
-* **Hero Section:** Interactive canvas-based particle network (constellation) that reacts to mouse movement.
-* **Draggable Terminal:** An interactive "About Us" window styled like a VS Code editor that can be dragged around the screen.
-* **Bento Grid Events:** A responsive grid layout for events featuring a custom "Matrix Rain" canvas effect on hover.
-* **Immersive Animations:** Powered by Framer Motion for smooth entrances, typing effects, and glitch animations.
-* **Theme:** Deep Black (`#0a0a0a`) background with Neon Green (`#00ff7f`) and Cyan (`#00FFFF`) accents.
+### ✨ Core Protocols (Features)
+* **constellation_bg.exe:** Interactive HTML5 Canvas particle network that reacts to mouse movement.
+* **glitch_text_effect:** Dynamic text decoding and glitch animations on entrance.
+* **draggable_terminal:** A floating "About Us" window styled like a code editor that users can drag across the viewport.
+* **matrix_rain_hover:** A custom visual effect where green digital rain falls inside event cards upon interaction.
+* **bento_grid_layout:** A responsive, glassmorphic grid system for displaying club events and workshops.
+* **end_of_line:** A footer design featuring system status indicators and a blinking cursor.
 
 ---
 
 ## 🛠 >_ Tech Stack
 
-This project is built using the modern React ecosystem, focusing on performance and animation.
+The architecture is built on the modern React ecosystem, optimized for speed and visual fidelity.
 
 | Component | Technology | Description |
 | :--- | :--- | :--- |
-| **Framework** | [Next.js 14](https://nextjs.org/) | App Router architecture |
-| **Language** | [TypeScript](https://www.typescriptlang.org/) | Static typing for reliability |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | Utility-first styling with custom config |
-| **Animation** | [Framer Motion](https://www.framer.com/motion/) | Complex UI transitions and gestures |
-| **Graphics** | HTML5 Canvas | Native canvas for particle/matrix effects |
-| **Icons** | [Lucide React](https://lucide.dev/) | Clean, consistent SVG icons |
+| **Framework** | [Next.js 14](https://nextjs.org/) | App Router & Server Components |
+| **Language** | [TypeScript](https://www.typescriptlang.org/) | Strict type safety for reliability |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | Utility-first styling with custom neon color config |
+| **Animation** | [Framer Motion](https://www.framer.com/motion/) | Complex UI transitions, gestures, and drag physics |
+| **Graphics** | HTML5 Canvas | Native canvas API for high-performance particle effects |
+| **Icons** | [Lucide React](https://lucide.dev/) | Clean, lightweight SVG icons |
 
 ---
 
 ## ⚡ >_ Installation
 
-Follow these steps to initialize the Terminus system on your local machine.
+Follow these instructions to clone the source code and initialize the system on your local machine.
 
 ### Prerequisites
 * Node.js (v18 or higher)
