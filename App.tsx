@@ -19,11 +19,14 @@ import { ArenaSurvey } from './components/ArenaSurvey';
 import { PracticeLabs } from './components/PracticeLabs';
 import { ContributionPortal } from './components/ContributionPortal';
 import { SystemLogs } from './components/SystemLogs';
+import { EditProfile } from './components/EditProfile';
+import { AdminLogin } from './components/AdminLogin';
 import { Login } from './components/Login';
+import { UserLogin } from './components/UserLogin';
 import { ArrowUp, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export type AppView = 'home' | 'projects' | 'mentorship' | 'security' | 'join' | 'team' | 'algo-night' | 'project-library' | 'contribution-portal' | 'mentorship-survey' | 'system-logs' | 'algo-arena-survey' | 'practice-labs' | 'login';
+export type AppView = 'home' | 'projects' | 'mentorship' | 'security' | 'join' | 'team' | 'algo-night' | 'project-library' | 'contribution-portal' | 'mentorship-survey' | 'system-logs' | 'algo-arena-survey' | 'practice-labs' | 'edit-profile' | 'admin-login' | 'login' | 'user-login';
 export type UserRole = 'GUEST' | 'USER' | 'ADMIN';
 
 const App: React.FC = () => {
@@ -47,12 +50,12 @@ const App: React.FC = () => {
   }, [currentView]);
 
   const handleNavigate = (view: AppView) => {
-    // Restricted views check
-    if ((view === 'security' || view === 'system-logs') && userRole !== 'ADMIN') {
-      setCurrentView('login');
-    } else {
-      setCurrentView(view);
+    if (view === 'edit-profile' && userRole !== 'ADMIN') {
+      alert('Access Denied: Admin role required.');
+      setCurrentView('admin-login');
+      return;
     }
+    setCurrentView(view);
     setIsHubOpen(false);
   };
 
@@ -103,8 +106,20 @@ const App: React.FC = () => {
             )}
 
             {currentView === 'login' && (
-              <motion.div key="login" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
-                <Login onLogin={handleLogin} />
+              <motion.div key="login" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <Login onNavigate={handleNavigate} />
+              </motion.div>
+            )}
+
+            {currentView === 'user-login' && (
+              <motion.div key="user-login" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <UserLogin onNavigate={handleNavigate} onLogin={handleLogin} />
+              </motion.div>
+            )}
+
+            {currentView === 'admin-login' && (
+              <motion.div key="admin-login" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <AdminLogin onNavigate={handleNavigate} onLogin={handleLogin} />
               </motion.div>
             )}
 
@@ -134,37 +149,25 @@ const App: React.FC = () => {
 
             {currentView === 'security' && (
               <motion.div key="security" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }}>
-                {userRole === 'ADMIN' ? <Security /> : (
-                  <div className="min-h-screen flex items-center justify-center pt-24">
-                    <div className="text-center space-y-4">
-                      <Lock size={48} className="text-red-500 mx-auto" />
-                      <h2 className="text-2xl font-mono text-red-500 uppercase">Unauthorized Access</h2>
-                      <p className="text-white/40">Admin credentials required for this protocol.</p>
-                      <button onClick={() => setCurrentView('login')} className="px-6 py-2 border border-red-500 text-red-500 hover:bg-red-500/10 uppercase font-mono text-xs">Login</button>
-                    </div>
-                  </div>
-                )}
+                 <Security />
               </motion.div>
             )}
 
             {currentView === 'system-logs' && (
               <motion.div key="system-logs" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                {userRole === 'ADMIN' ? <SystemLogs onNavigate={handleNavigate} /> : (
-                   <div className="min-h-screen flex items-center justify-center pt-24">
-                   <div className="text-center space-y-4">
-                     <Lock size={48} className="text-red-500 mx-auto" />
-                     <h2 className="text-2xl font-mono text-red-500 uppercase">Logs Restricted</h2>
-                     <p className="text-white/40">Only authenticated admins can view system logs.</p>
-                     <button onClick={() => setCurrentView('login')} className="px-6 py-2 border border-red-500 text-red-500 hover:bg-red-500/10 uppercase font-mono text-xs">Authenticate</button>
-                   </div>
-                 </div>
-                )}
+                <SystemLogs onNavigate={handleNavigate} />
               </motion.div>
             )}
 
             {currentView === 'team' && (
               <motion.div key="team" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                <Team />
+                <Team onNavigate={handleNavigate} />
+              </motion.div>
+            )}
+            
+            {currentView === 'edit-profile' && (
+              <motion.div key="edit-profile" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+                <EditProfile onNavigate={handleNavigate} />
               </motion.div>
             )}
 

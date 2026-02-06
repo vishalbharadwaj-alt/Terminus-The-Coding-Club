@@ -1,0 +1,180 @@
+{
+  "ADMIN": [
+    {
+      "id": "A001",
+      "name": "Vishal Bharadwaj",
+      "role": ["Club President", "Technical Head", "Core Member", "Admin Member"],
+      "avatar": "/avatars/vishal.jpg",
+      "bio": "Lead Security Engineer and System Architect. Ensures the integrity and robustness of the Terminus network.",
+      "github": "https://github.com/vishalbharadwaj-alt",
+      "linkedin": "https://www.linkedin.com/in/vishal-bharadwaj-alt/",
+      "twitter": "https://twitter.com/vishalbhardwaj"
+    },
+    {
+      "id": "A002",
+      "name": "Utkrista Kumar Das",
+      "role": ["Club Vice President", "Lead Member", "Database Lead", "Core Member", "Admin Member"],
+      "avatar": "/avatars/utkrista.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/utkristakumar",
+      "linkedin": "https://linkedin.com/in/utkristakumar",
+      "twitter": "https://twitter.com/utkristakumar"
+    },
+    {
+      "id": "A003",
+      "name": "Prayash Bhagawati",
+      "role": ["Secretary", "Core Member", "Admin Member"],
+      "avatar": "/avatars/prayash.jpg",
+      "bio": "Secretary of Terminus. Manages the administrative and organizational tasks of the club.",
+      "github": "https://github.com/prayashbhagawati",
+      "linkedin": "https://linkedin.com/in/prayashbhagawati",
+      "twitter": "https://twitter.com/prayashbhagawati"
+    }
+  ],
+  "CORE_MEMBER": [
+    {
+      "id": "C002",
+      "name": "Tushar Kranti Sutradhar",
+      "role": ["Finance Head", "Core Member", "Hackathon Lead"],
+      "avatar": "/avatars/tushar.jpg",
+      "bio": "Finance Head of Terminus. Manages the financial health and strategy of the organization.",
+      "github": "https://github.com/TusherSutro03-dotcom",
+      "linkedin": "https://www.linkedin.com/in/tusher-kranti-sutradhar-b92118379?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "twitter": "https://twitter.com/tusharkranti"
+    },
+    {
+      "id": "C003",
+      "name": "Trishna Shill",
+      "role": ["PR and Sponsorship Head", "Core Member"],
+      "avatar": "/avatars/trishna.jpg",
+      "bio": "PR and Sponsorship Head of Terminus. Manages public relations and secures sponsorships for the organization.",
+      "github": "https://github.com/trishnashill",
+      "linkedin": "https://linkedin.com/in/trishnashill",
+      "twitter": "https://twitter.com/trishnashill"
+    },
+    {
+      "id": "C004",
+      "name": "Madhushreya Baruah",
+      "role": ["Multimedia Head", "Core Member"],
+      "avatar": "/avatars/madhushreya.jpg",
+      "bio": "Multimedia Head of Terminus. Leads the creation of all multimedia content for the organization.",
+      "github": "https://github.com/madhushreyabaruah",
+      "linkedin": "https://linkedin.com/in/madhushreyabaruah",
+      "twitter": "https://twitter.com/madhushreyabaruah"
+    }
+  ],
+  "CORE_COORDINATOR": [
+    {
+      "id": "CC001",
+      "name": "Satyam Acharya",
+      "role": ["Technical Coordinator", "Core Member"],
+      "avatar": "/avatars/satyam.jpg",
+      "bio": "Technical Coordinator of Terminus. Assists the Technical Head in managing the technical operations of the organization.",
+      "github": "https://github.com/satyamacharya",
+      "linkedin": "https://linkedin.com/in/satyamacharya",
+      "twitter": "https://twitter.com/satyamacharya"
+    },
+    {
+      "id": "CC002",
+      "name": "Hirakjyoti Sarma",
+      "role": ["Finance Coordinator", "Core Member"],
+      "avatar": "/avatars/hirakjyoti.jpg",
+      "bio": "Finance Coordinator of Terminus. Assists the Finance Head in managing the financial operations of the organization.",
+      "github": "https://github.com/hirakjyotisarma",
+      "linkedin": "https://linkedin.com/in/hirakjyotisarma",
+      "twitter": "https://twitter.com/hirakjyotisarma"
+    },
+    {
+      "id": "CC003",
+      "name": "Nilotpal Barman",
+      "role": "PR and Sponsorship Coordinator",
+      "avatar": "/avatars/nilotpalb.jpg",
+      "bio": "PR and Sponsorship Coordinator of Terminus. Assists the PR and Sponsorship Head in managing public relations and sponsorships.",
+      "github": "https://github.com/nilotpalbarman",
+      "linkedin": "https://linkedin.com/in/nilotpalbarman",
+      "twitter": "https://twitter.com/nilotpalbarman"
+    },
+    {
+      "id": "CC004",
+      "name": "Nilotpal Bardaloi",
+      "role": "Multimedia Coordinator",
+      "avatar": "/avatars/nilotpal.jpg",
+      "bio": "Multimedia Coordinator of Terminus. Assists the Multimedia Head in creating multimedia content.",
+      "github": "https://github.com/nilotpalbardaloi",
+      "linkedin": "https://linkedin.com/in/nilotpalbardaloi",
+      "twitter": "https://twitter.com/nilotpalbardaloi"
+    }
+  ],
+  "LEAD_MEMBER": [
+    {
+      "id": "L003",
+      "name": "Arindam Kashyap",
+      "role": "Lead Member",
+      "avatar": "/avatars/arindam.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/arindamkashyap",
+      "linkedin": "https://linkedin.com/in/arindamkashyap",
+      "twitter": "https://twitter.com/arindamkashyap"
+    },
+    {
+      "id": "L004",
+      "name": "Deepsikha Das",
+      "role": ["Lead Member", "Core Member"],
+      "avatar": "/avatars/deepsikha.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/deepsikhadas",
+      "linkedin": "https://linkedin.com/in/deepsikhaDas",
+      "twitter": "https://twitter.com/deepsikhadas"
+    },
+    {
+      "id": "L005",
+      "name": "Dhritiman Bayan",
+      "role": ["Lead Member", "Core Member"],
+      "avatar": "/avatars/dhritiman.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/dhritimanbayan",
+      "linkedin": "https://linkedin.com/in/dhritimanbayan",
+      "twitter": "https://twitter.com/dhritimanbayan"
+    },
+    {
+      "id": "L006",
+      "name": "Nabajyoti Pathak",
+      "role": "Lead Member",
+      "avatar": "/avatars/nabajyoti.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/nabajyotipathak",
+      "linkedin": "https://linkedin.com/in/nabajyotipathak",
+      "twitter": "https://twitter.com/nabajyotipathak"
+    },
+    {
+      "id": "L007",
+      "name": "Piyush Pritam Nath",
+      "role": "Lead Member",
+      "avatar": "/avatars/piyush.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/piyushpritamnath",
+      "linkedin": "https://linkedin.com/in/piyushpritamnath",
+      "twitter": "https://twitter.com/piyushpritamnath"
+    },
+    {
+      "id": "L008",
+      "name": "Rodali Phukan",
+      "role": "Lead Member",
+      "avatar": "/avatars/rodali.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/rodaliphukan",
+      "linkedin": "https://linkedin.com/in/rodaliphukan",
+      "twitter": "https://twitter.com/rodaliphukan"
+    },
+    {
+      "id": "L009",
+      "name": "Anubarna Roy",
+      "role": "Lead Member",
+      "avatar": "/avatars/anubarna.jpg",
+      "bio": "Lead Member of Terminus. A key contributor to the technical projects and initiatives of the organization.",
+      "github": "https://github.com/anubarnaroy",
+      "linkedin": "https://linkedin.com/in/anubarnaroy",
+      "twitter": "https://twitter.com/anubarnaroy"
+    }
+  ]
+}

@@ -23,6 +23,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
+  const navItems = [
+    { id: 'home', label: 'Home', roles: ['GUEST', 'USER', 'ADMIN'] },
+    { id: 'projects', label: 'Source', roles: ['GUEST', 'USER', 'ADMIN'] },
+    { id: 'mentorship', label: 'Uplink', roles: ['GUEST', 'USER', 'ADMIN'] },
+    { id: 'security', label: 'Security', roles: ['ADMIN'] },
+  ];
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
@@ -33,6 +40,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         className="flex items-center gap-2 cursor-pointer group"
         onClick={() => onNavigate('home')}
       >
+        <img src="/logo.svg" alt="Terminus Logo" className="h-8 w-8" />
         <motion.span 
           animate={{ 
             textShadow: [
@@ -42,19 +50,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             ]
           }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="font-eb-garamond text-xl font-bold tracking-tight text-white group-hover:text-[#00FFFF] transition-colors"
+          className="font-mono text-xl font-bold tracking-tight text-white group-hover:text-[#00FFFF] transition-colors"
         >
           TERMINUS
         </motion.span>
       </div>
 
       <div className="hidden md:flex items-center gap-8">
-        {[
-          { id: 'home', label: 'Home' },
-          { id: 'projects', label: 'Source' },
-          { id: 'mentorship', label: 'Uplink' },
-          { id: 'security', label: 'Security' }
-        ].map((item) => (
+        {navItems.filter(item => item.roles.includes(userRole)).map((item) => (
           <button 
             key={item.id} 
             onClick={() => onNavigate(item.id as AppView)}
@@ -104,6 +107,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <p className="text-[8px] font-mono text-white/30 uppercase tracking-widest">Access Role</p>
                     <p className={`text-[10px] font-mono font-bold ${userRole === 'ADMIN' ? 'text-red-500' : 'text-[#00FF7F]'}`}>{userRole}</p>
                   </div>
+                  {userRole === 'ADMIN' &&
+                    <button 
+                      onClick={() => { onNavigate('edit-profile'); setShowProfileMenu(false); }}
+                      className="w-full text-left px-4 py-2 text-xs font-mono text-white/60 hover:text-white hover:bg-white/5 flex items-center gap-2 transition-all"
+                    >
+                      <User size={14} /> Edit Profile
+                    </button>
+                  }
                   <button 
                     onClick={() => { onLogout(); setShowProfileMenu(false); }}
                     className="w-full text-left px-4 py-2 text-xs font-mono text-white/60 hover:text-red-500 hover:bg-white/5 flex items-center gap-2 transition-all"

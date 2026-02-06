@@ -1,0 +1,220 @@
+
+{
+  "adminMembers": [
+    {
+      "name": "Vishal Bharadwaj",
+      "role": "Club President",
+      "bio": "Visionary architect leading the next generation of engineers. Expert in building scalable digital ecosystems.",
+      "specialty": "Leadership",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+      "name": "Utkrista Kumar Das",
+      "role": "Club Vice President",
+      "bio": "Systems deep-diver specializing in memory-safe architectures and performance-critical infrastructures.",
+      "specialty": "Leadership",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+      "name": "Prayash Bhagawati",
+      "role": "General Secretary",
+      "bio": "Cloud-native enthusiast focusing on container orchestration, microservices, and high-availability systems.",
+      "specialty": "Leadership",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    }
+  ],
+  "coreMembers": [
+    {
+      "name": "Vishal Bharadwaj",
+      "role": "Technical Head",
+      "bio": "Leading the technical vision and execution of the club's projects.",
+      "specialty": "Backend",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+      "name": "Tushar Kranti Sutradhar",
+      "role": "Finance Head",
+      "bio": "Managing the club's finances and ensuring its financial sustainability.",
+      "specialty": "Leadership",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+      "name": "Trishna Shill",
+      "role": "PR and Sponsorship Head",
+      "bio": "Building relationships with sponsors and managing the club's public image.",
+      "specialty": "Leadership",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+        "name": "Madhushreya Baruah",
+        "role": "Multimedia Head",
+        "bio": "Creating and managing the club's multimedia content.",
+        "specialty": "Frontend",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      }
+  ],
+  "coreCoordinators": [
+    {
+      "name": "Satyam Acharya",
+      "role": "Technical Coordinator",
+      "bio": "Assisting the technical head and coordinating technical activities.",
+      "specialty": "Backend",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+      "name": "Hirakjyoti Sarma",
+      "role": "Finance Coordinator",
+      "bio": "Assisting the finance head and managing financial records.",
+      "specialty": "Leadership",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+      "name": "Nilotpal Barman",
+      "role": "PR and Sponsorship Coordinator",
+      "bio": "Assisting the PR and sponsorship head and managing outreach.",
+      "specialty": "Leadership",
+      "github": "https://github.com",
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "avatar": "https://example.com/avatar.png",
+      "password": "password"
+    },
+    {
+        "name": "Nilotpal Bardaloi",
+        "role": "Multimedia Coordinator",
+        "bio": "Assisting the multimedia head and coordinating multimedia content.",
+        "specialty": "Frontend",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      }
+  ],
+  "leadMembers": [
+    {
+        "name": "Utkrista Kumar Das",
+        "role": "Lead Member",
+        "bio": "Systems deep-diver specializing in memory-safe architectures and performance-critical infrastructures.",
+        "specialty": "Backend",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      },
+      {
+        "name": "Tushar Kranti Sutradhar",
+        "role": "Lead Member",
+        "bio": "Data integrity and scalability specialist. Architecting complex relational and non-relational storage solutions.",
+        "specialty": "Database",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      },
+      {
+        "name": "Arindam Kashyap",
+        "role": "Lead Member",
+        "bio": "Full-stack developer with a passion for creating beautiful and functional web applications.",
+        "specialty": "Frontend",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      },
+      {
+        "name": "Deepsikha Das",
+        "role": "Lead Member",
+        "bio": "Algorithmic complexity specialist. Solving the world's toughest problems one optimization at a time.",
+        "specialty": "Algorithms",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      },
+      {
+        "name": "Dhritiman Bayan",
+        "role": "Lead Member",
+        "bio": "Crafting immersive, performance-driven user interfaces. Master of animations and modern design systems.",
+        "specialty": "Frontend",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      },
+      {
+        "name": "Nabajyoti Pathak",
+        "role": "Lead Member",
+        "bio": "Passionate about building scalable and reliable backend systems.",
+        "specialty": "Backend",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      },
+      {
+        "name": "Piyush Pritam Nath",
+        "role": "Lead Member",
+        "bio": "Cybersecurity enthusiast with a focus on ethical hacking and secure coding practices.",
+        "specialty": "Security",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      },
+      {
+        "name": "Rodali Phukan",
+        "role": "Lead Member",
+        "bio": "Data scientist with a passion for machine learning and artificial intelligence.",
+        "specialty": "Algorithms",
+        "github": "https://github.com",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com",
+        "avatar": "https://example.com/avatar.png",
+        "password": "password"
+      }
+  ]
+}

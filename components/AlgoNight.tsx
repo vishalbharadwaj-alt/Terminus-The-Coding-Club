@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Cpu, Trophy, Zap, Terminal, Code2, ArrowRight } from 'lucide-react';
@@ -77,7 +76,7 @@ export const AlgoNight: React.FC<AlgoNightProps> = ({ onNavigate }) => {
               <p className="text-white/60">Given a sorted array of integers, find the first occurrence of a target element...</p>
               <div className="mt-4 flex justify-between items-center pt-4 border-t border-white/5">
                 <span className="text-[10px] text-white/20 uppercase">Time Limit: 1.0s</span>
-                <span className="text-orange-500 font-bold cursor-pointer hover:underline" onClick={() => onNavigate('algo-arena-survey')}>START ></span>
+                <span className="text-orange-500 font-bold cursor-pointer hover:underline" onClick={() => onNavigate('algo-arena-survey')}>START {'>'}</span>
               </div>
             </div>
           </div>
@@ -123,7 +122,21 @@ export const AlgoNight: React.FC<AlgoNightProps> = ({ onNavigate }) => {
               </h3>
               <div className="space-y-3">
                 {['LeetCode_List', 'Interview_Prep_Git', 'Complexity_Cheatsheet', 'C++_Tips'].map(link => (
-                  <a key={link} href="#" className="flex items-center justify-between p-3 bg-white/5 rounded hover:bg-white/10 transition-all group">
+                  <a 
+                    key={link} 
+                    href={
+                      link === 'LeetCode_List' 
+                        ? 'https://leetcode.com/problem-list/arw5ns9e/' 
+                        : link === 'Interview_Prep_Git'
+                          ? 'https://medium.com/@veerababu.narni232/interview-series-git-87509294230a'
+                          : link === 'Complexity_Cheatsheet'
+                            ? 'https://www.bigocheatsheet.com/'
+                            : link === 'C++_Tips'
+                              ? 'https://www.geeksforgeeks.org/cpp/10-cpp-programming-tricks-that-you-should-know/'
+                              : '#'
+                    } 
+                    className="flex items-center justify-between p-3 bg-white/5 rounded hover:bg-white/10 transition-all group"
+                  >
                     <span className="text-[10px] font-mono text-white/50 group-hover:text-white uppercase">{link}</span>
                     <ArrowRight size={14} className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>

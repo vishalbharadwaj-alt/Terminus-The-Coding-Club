@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Send, CheckCircle2, Zap, Brain, Code, Target } from 'lucide-react';
@@ -64,6 +63,9 @@ export const ArenaSurvey: React.FC<ArenaSurveyProps> = ({ onNavigate }) => {
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase italic mb-6">Enter_The_Arena</h1>
           <p className="text-lg text-white/50 leading-relaxed max-w-2xl">
             Register your profile for the upcoming Algo-Night. We use this data to balance the ranks and provide optimized problem sets.
+          </p>
+          <p className="text-lg text-white/50 leading-relaxed max-w-2xl">
+            Next session: Saturday and Sunday @ 7PM.
           </p>
         </div>
 

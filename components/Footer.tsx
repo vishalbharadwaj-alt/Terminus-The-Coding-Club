@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
@@ -29,11 +28,11 @@ export const Footer: React.FC = () => {
 
         <div className="flex flex-col items-center gap-6">
           <div className="flex gap-6">
-            <a href="#" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Github size={20} /></a>
-            <a href="#" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Twitter size={20} /></a>
-            <a href="#" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Instagram size={20} /></a>
-            <a href="#" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Linkedin size={20} /></a>
-            <a href="mailto:hello@terminus.edu" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Mail size={20} /></a>
+            <a href="https://github.com/Terminus-The-Coding-Club" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Github size={20} /></a>
+            <a href="https://x.com/Terminus_ASU" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Twitter size={20} /></a>
+            <a href="https://www.instagram.com/terminus.tcc/" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Instagram size={20} /></a>
+            <a href="https://www.linkedin.com/company/terminustcc/" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Linkedin size={20} /></a>
+            <a href="mailto:terminus.tcc@zohomail.in" className="text-white/40 hover:text-[#00FFFF] transition-colors"><Mail size={20} /></a>
           </div>
           
           <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10">

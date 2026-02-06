@@ -107,7 +107,7 @@ export const Events: React.FC<EventsProps> = ({ onNavigate }) => {
           >
             Upcoming
           </motion.h4>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">The Circuit Board</h2>
+          <motion.h2 className="text-4xl md:text-5xl font-bold tracking-tight">The Circuit Board</motion.h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
